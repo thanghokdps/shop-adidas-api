@@ -4,21 +4,26 @@ namespace App\Http\Controllers\User;
 
 use App\Helpers\CommonResponse;
 use App\Helpers\HandleException;
+use App\Helpers\HttpCode;
 use App\Helpers\ResponseHelper;
+use App\Helpers\Status;
 use App\Http\Request\CreateUserRequest;
+use App\Http\Request\DeleteOrUpdateDeletedRequest;
 use App\Http\Request\UpdateUserRequest;
+use App\Mail\SignupEmail;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class UserController
 {
     protected $userService;
+    protected $mailController;
 
     public function __construct(UserService $userService)
     {
@@ -34,6 +39,7 @@ class UserController
     {
         try {
             DB::beginTransaction();
+            $code = random_int(100000,999999);
             $data = [
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -41,10 +47,17 @@ class UserController
                 'gender' => $request['gender'],
                 'address' => $request['address'],
                 'phone' => $request['phone'],
+                'code' => $code,
             ];
-            $transaction = $this->userService->create($data);
+            $user = $this->userService->create($data);
             DB::commit();
-            return ResponseHelper::send($transaction);
+            $this->userService->deleteUsers([$user['id']]);
+            $mailData = [
+                'send' => 'welcome',
+                'code' => $code
+            ];
+            Mail::to($request['email'])->send(new SignupEmail($mailData));
+            return ResponseHelper::send($user);
         } catch (QueryException $e) {
             DB::rollBack();
             Log::error($e);
@@ -72,6 +85,45 @@ class UserController
             DB::rollBack();
             Log::error($e);
             return CommonResponse::unknownResponse($e->getMessage());
+        }
+    }
+
+    public function forgetPassword(UpdateUserRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $code = random_int(100000,999999);
+            $user = $this->userService->findByEmail( $request['email'])->toArray();
+            $result = $this->userService->update(['password'=>Hash::make($request['password']), 'code'=>$code], head($user)['id']);
+            DB::commit();
+            if(head($user)['deleted_at']==null) {
+                $this->userService->deleteUsers([head($user)['id']]);
+            }
+            $mailData = [
+                'send' => 'forget',
+                'code' => $code
+            ];
+            Mail::to($request['email'])->send(new SignupEmail($mailData));
+            return ResponseHelper::send(head($user));
+        } catch (QueryException $e) {
+            DB::rollBack();
+            Log::error($e);
+            return HandleException::catchQueryException($e);
+        }  catch (Exception $e) {
+            DB::rollBack();
+            Log::error($e);
+            return CommonResponse::unknownResponse($e->getMessage());
+        }
+    }
+
+    public function verify(DeleteOrUpdateDeletedRequest $request): JsonResponse
+    {
+        $user = $this->userService->getUserVerify(head($request['ids']));
+        if($request['code'] == $user['code']) {
+            return ResponseHelper::send($this->userService->updateDeletedUsers($request['ids']));
+        } else {
+            $errors['auth'] = "Mã xác thực không chính xác!";
+            return ResponseHelper::send([], Status::NG, HttpCode::BAD_REQUEST, $errors);
         }
     }
 }

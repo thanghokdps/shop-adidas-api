@@ -21,11 +21,13 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'gender',
         'address',
-        'phone'
+        'phone',
+        'code'
     ];
 
     protected $hidden = [
-        'password'
+        'password',
+        'code'
     ];
 
     public function getJWTIdentifier()

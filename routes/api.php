@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'user.'], function () {
     Route::post('/login', 'AuthenticateController@login')->name('login');
-
     Route::post('/register', 'UserController@create')->name('create');
+    Route::get('/verify', 'UserController@verify')->name('verify');
+    Route::post('/forgetpassword', 'UserController@forgetPassword')->name('forgetPassword');
 
     Route::group(['prefix' => 'category', 'as' => 'user.'], function () {
         Route::get('/', 'CategoryController@index')->name('index');
@@ -32,7 +33,7 @@ Route::group(['as' => 'user.'], function () {
 
     Route::group(['prefix' => 'comment', 'as' => 'user.'], function () {
         Route::get('/{id}', 'CommentController@index')->name('index');
-        Route::get('/{id}', 'CommentController@getAccordingToStar')->name('getAccordingToStar');
+        Route::get('/star/{id}', 'CommentController@getAccordingToStar')->name('getAccordingToStar');
     });
 
     Route::group(['prefix' => 'transaction', 'as' => 'user.'], function () {

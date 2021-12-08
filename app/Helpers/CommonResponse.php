@@ -11,7 +11,7 @@ class CommonResponse {
             [],
             Status::NG,
             HttpCode::NOT_FOUND,
-            ErrorCodeHelper::NOT_FOUND
+            ['error' => ErrorCodeHelper::NOT_FOUND]
         );
     }
 
@@ -21,7 +21,7 @@ class CommonResponse {
             [],
             Status::NG,
             HttpCode::CONFLICT,
-            ErrorCodeHelper::EXISTED
+            ['error' => ErrorCodeHelper::EXISTED]
         );
     }
 
@@ -31,7 +31,7 @@ class CommonResponse {
             [],
             Status::NG,
             HttpCode::BAD_REQUEST,
-            ErrorCodeHelper::INVALID
+            ['error' => ErrorCodeHelper::INVALID]
         );
     }
 
@@ -41,7 +41,7 @@ class CommonResponse {
             [],
             Status::NG,
             HttpCode::FORBIDDEN,
-            ErrorCodeHelper::NOT_ALLOW
+            ['error' => ErrorCodeHelper::NOT_ALLOW]
         );
     }
 

@@ -21,7 +21,10 @@ class Order extends Model implements Transformable
         'transaction_id',
         'product_id',
         'quantity',
-        'size'
+        'size',
+        'name',
+        'price',
+        'image',
     ];
 
     public function product(): HasOne

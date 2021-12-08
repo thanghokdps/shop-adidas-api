@@ -31,6 +31,7 @@ class DeleteOrUpdateDeletedRequest extends FormRequest
     {
         return [
             'ids' => 'required|array',
+            'code' => 'numeric',
         ];
     }
 

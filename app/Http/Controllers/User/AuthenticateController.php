@@ -16,8 +16,7 @@ class AuthenticateController
         $credentials = $request->only(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            $errors['auth'] = ErrorCodeHelper::UNAUTHORIZED;
-
+            $errors['auth'] = "Tài khoản hoặc mật khẩu không đúng";
             return ResponseHelper::send([], Status::NG, HttpCode::UNAUTHORIZED, $errors);
         }
         return ResponseHelper::send(['token' => $token, 'info' => auth('api')->user()]);

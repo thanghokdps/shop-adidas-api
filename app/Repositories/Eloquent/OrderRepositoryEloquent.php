@@ -43,18 +43,16 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     public function budgetProduct()
     {
         return $this->model
-            ->selectRaw('product_id, SUM(quantity) as quantity, SUM(products.price * quantity) as price, products.name')
-            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->selectRaw('product_id, SUM(quantity) as quantity, SUM(orders.price) as price, orders.name')
             ->groupBy('product_id')
-            ->orderBy('product_id')
+            ->orderBy('price','DESC')
             ->get();
     }
 
     public function budgetProductDetail($month, $year, $day, $group)
     {
         $sql = $this->model
-            ->selectRaw('product_id, SUM(quantity) as quantity, SUM(products.price * quantity) as price, products.name')
-            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->selectRaw('product_id, SUM(quantity) as quantity, SUM(orders.price) as price, orders.name')
             ->groupBy('product_id')
             ->orderBy('price','DESC');
         if($group == "day") {
@@ -71,20 +69,17 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     {
         $sql = "";
         if($group == "day") {
-            $sql = $this->model->selectRaw('orders.created_at, SUM(products.price * quantity) as price')
-                ->join('products', 'orders.product_id', '=', 'products.id')
+            $sql = $this->model->selectRaw('orders.created_at, SUM(orders.price) as price')
                 ->groupBy('created_at')
                 ->orderBy('created_at','DESC')->whereMonth('orders.created_at', $month);
         } elseif($group == "month") {
-            $sql = $this->model->selectRaw('MONTH(orders.created_at) as month, SUM(products.price * quantity) as price')
-                ->join('products', 'orders.product_id', '=', 'products.id')
+            $sql = $this->model->selectRaw('MONTH(orders.created_at) as month, SUM(orders.price) as price')
                 ->groupBy('month')
                 ->orderBy('month','DESC')->whereYear('orders.created_at', $year);
         } elseif($group == "year") {
-            $sql = $this->model->selectRaw('YEAR(orders.created_at) as year, SUM(products.price * quantity) as price')
-                ->join('products', 'orders.product_id', '=', 'products.id')
+            $sql = $this->model->selectRaw('YEAR(orders.created_at) as year, SUM(orders.price) as price')
                 ->groupBy('year')
-                ->orderBy('year','DESC')->whereYear('orders.created_at', ">=", intval($year) - 4);
+                ->orderBy('year','DESC')->whereYear('orders.created_at', "<=",$year);
         }
         return $sql->get();
     }

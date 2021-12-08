@@ -60,7 +60,8 @@ class TransactionController
                     'transaction_id' => $transaction->id ?? null,
                     'product_id' => $product['id'],
                     'quantity' => $product['quantity'],
-                    'size' => $product['size']
+                    'size' => $product['size'],
+                    'price' => $product['price']
                 ];
                 $detailProduct = [
                     'product_id' => $product['id'],
