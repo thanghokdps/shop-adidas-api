@@ -28,14 +28,13 @@ class CommentService
         return $this->commentRepository->create($attributes);
     }
 
+    public function update(array $attributes, $id)
+    {
+        return $this->commentRepository->update($attributes, $id);
+    }
+
     public function getAccordingToStar($id, $star)
     {
         return $this->commentRepository->findWhere(['product_id' => $id, 'star' => $star]);
     }
-//    public function update(array $attributes, $id)
-//    {
-//        return $this->commentService->update($attributes, $id);
-//    }
-
-
 }

@@ -80,7 +80,7 @@ class CategoryController
         }  catch (Exception $e) {
             DB::rollBack();
             Log::error($e);
-            return CommonResponse::unknownResponse($e->getMessage());
+            return CommonResponse::unknownResponse();
         }
     }
 
@@ -102,7 +102,7 @@ class CategoryController
         }  catch (Exception $e) {
             DB::rollBack();
             Log::error($e);
-            return CommonResponse::unknownResponse($e->getMessage());
+            return CommonResponse::unknownResponse();
         }
     }
 

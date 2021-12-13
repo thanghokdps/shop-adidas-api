@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/product/{id}/{name}', 'Controller@viewImage')->name('viewImage');
+Route::get('/comment/{id}/{name}', 'Controller@viewImageComment')->name('viewImage');

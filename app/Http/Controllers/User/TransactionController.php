@@ -82,7 +82,7 @@ class TransactionController
         }  catch (Exception $e) {
             DB::rollBack();
             Log::error($e);
-            return CommonResponse::unknownResponse($e->getMessage());
+            return CommonResponse::unknownResponse();
         }
     }
 
@@ -90,7 +90,7 @@ class TransactionController
     {
         try {
             DB::beginTransaction();
-            $result = $this->transactionService->update(array('status' => 0), $id);
+            $result = $this->transactionService->update(['status' => 0], $id);
             $orders = $this->orderService->findByField('transaction_id', $id);
             $detailProducts = [];
             foreach ($orders as $order)
@@ -103,6 +103,7 @@ class TransactionController
                 array_push($detailProducts, $detailProduct);
             }
             $detailProducts = $this->detailProductService->update($detailProducts);
+            $this->orderService->delete($id);
             DB::commit();
             return ResponseHelper::send($result);
         } catch (QueryException $e) {
@@ -112,7 +113,7 @@ class TransactionController
         }  catch (Exception $e) {
             DB::rollBack();
             Log::error($e);
-            return CommonResponse::unknownResponse($e->getMessage());
+            return CommonResponse::unknownResponse();
         }
     }
 }

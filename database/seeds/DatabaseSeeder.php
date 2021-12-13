@@ -399,12 +399,12 @@ class CommentSeeder extends Seeder
     public function run()
     {
         DB::table('comments')->insert([
-            ['product_id'=>1, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>1, 'user_id'=>2, 'star'=>'5', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-02-standard.jpg;https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-03-standard.jpg' , 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>1, 'user_id'=>3, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>2, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>2, 'user_id'=>2, 'star'=>'3', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>2, 'user_id'=>3, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>3, 'user_id'=>3, 'star'=>'3', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>3, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>3, 'user_id'=>2, 'star'=>'5', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/02/EG1192-1.jpg', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>4, 'user_id'=>3, 'star'=>'4', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>4, 'user_id'=>2, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'created_at' => date("Y-m-d H:i:s")],
             ['product_id'=>5, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],

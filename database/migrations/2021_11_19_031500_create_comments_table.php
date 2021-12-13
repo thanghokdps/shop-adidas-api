@@ -24,6 +24,7 @@ class CreateCommentsTable extends Migration
             $table->unique(['product_id', 'user_id']);
             $table->integer('star');
             $table->longText('content');
+            $table->longText('image');
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

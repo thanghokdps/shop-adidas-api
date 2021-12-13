@@ -31,4 +31,9 @@ class Product extends Model implements Transformable
     {
         return $this->hasMany(DetailProduct::class, 'product_id', 'id');
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'product_id', 'id');
+    }
 }

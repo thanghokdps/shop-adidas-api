@@ -45,7 +45,7 @@ class CommonResponse {
         );
     }
 
-    public static function unknownResponse($e): JsonResponse
+    public static function unknownResponse(): JsonResponse
     {
         if (str_contains($e, 'No query results')) {
             $e = 'Value is not found';

@@ -75,7 +75,7 @@ class UserController
         }  catch (Exception $e) {
             DB::rollBack();
             Log::error($e);
-            return CommonResponse::unknownResponse($e->getMessage());
+            return CommonResponse::unknownResponse();
         }
     }
 

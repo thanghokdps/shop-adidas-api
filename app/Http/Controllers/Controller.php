@@ -24,4 +24,15 @@ class Controller extends BaseController
         $response->header("Content-Type", $type);
         return $response;
     }
+
+    public function viewImageComment($id, $name): \Illuminate\Http\Response
+    {
+        $path = "comment/$id/$name";
+        $pathImage = Storage::disk('public')->path($path);
+        $image = File::get($pathImage);
+        $type = File::mimeType($pathImage);
+        $response = Response::make($image, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    }
 }

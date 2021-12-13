@@ -20,7 +20,7 @@ class ProductService
 
     public function all()
     {
-        return $this->productRepository->with(['detailProducts'])->allByCreated();
+        return $this->productRepository->with(['detailProducts', 'comments'])->allByCreated();
     }
 
     public function findByField($field, $value, $columns = ['*'])

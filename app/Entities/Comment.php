@@ -24,6 +24,7 @@ class Comment extends Model implements Transformable
         'product_id',
         'user_id',
         'star',
+        'image',
         'content'
     ];
 
