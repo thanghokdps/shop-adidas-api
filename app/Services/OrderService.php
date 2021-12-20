@@ -33,6 +33,11 @@ class OrderService
         return $this->orderRepository->where('transaction_id', $id)->delete();
     }
 
+    public function deleteHard($id)
+    {
+        return $this->orderRepository->where('transaction_id', $id)->forceDelete();
+    }
+
     public function budgetProduct()
     {
         return $this->orderRepository->budgetProduct();
@@ -46,5 +51,10 @@ class OrderService
     public function budgetDate($month, $year, $day, $group)
     {
         return $this->orderRepository->budgetDate($month, $year, $day, $group);
+    }
+
+    public function updateIsComment($id)
+    {
+        return $this->orderRepository->update(['is_comment'=>true], $id);
     }
 }

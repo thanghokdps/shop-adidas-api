@@ -8,6 +8,7 @@ use App\Helpers\ResponseHelper;
 use App\Helpers\Status;
 use App\Http\Request\CreateCommentRequest;
 use App\Services\CommentService;
+use App\Services\OrderService;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
@@ -19,10 +20,12 @@ use Illuminate\Support\Facades\Storage;
 class CommentController
 {
     protected $commentService;
+    protected $orderService;
 
-    public function __construct(CommentService $commentService)
+    public function __construct(CommentService $commentService, OrderService $orderService)
     {
         $this->commentService = $commentService;
+        $this->orderService = $orderService;
     }
 
     public function index($id): JsonResponse
@@ -60,6 +63,7 @@ class CommentController
                 }
             }
             DB::commit();
+            $this->orderService->updateIsComment($request['order_id']);
             return ResponseHelper::send($comment);
         } catch (QueryException $e) {
             DB::rollBack();

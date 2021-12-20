@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('image')->nullable();
+            $table->tinyInteger('is_comment')->default(false);
             $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();

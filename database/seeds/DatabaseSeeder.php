@@ -372,8 +372,9 @@ class TransactionSeeder extends Seeder
     public function run()
     {
         DB::table('transactions')->insert([
-            ['status'=>1, 'user_id'=>2, 'user_name'=>'Thắng Quang', 'user_email'=>'thanghorit@gmail.com', 'user_address'=>'141 đường Nguyễn Xí, phường Hòa Minh, quận Liên Chiểu, thành phố Đà Nẵng', 'user_phone'=>'0971504302', 'amount'=>4040000, 'payment'=>'Thanh toán bằng ví momo', 'shipping'=>'Giao hàng nhanh', 'created_at' => date("Y-m-d H:i:s")],
-            ['status'=>0, 'user_id'=>2, 'user_name'=>'Thắng Quang', 'user_email'=>'thanghorit@gmail.com', 'user_address'=>'141 đường Nguyễn Xí, phường Hòa Minh, quận Liên Chiểu, thành phố Đà Nẵng', 'user_phone'=>'0971504302', 'amount'=>9840000, 'payment'=>'Thanh toán sau khi nhận hàng', 'shipping'=>'Giao hàng nhanh', 'created_at' => date("Y-m-d H:i:s")],
+            ['status'=>3, 'user_id'=>2, 'user_name'=>'Thắng Quang', 'user_email'=>'thanghorit@gmail.com', 'user_address'=>'141 đường Nguyễn Xí, phường Hòa Minh, quận Liên Chiểu, thành phố Đà Nẵng', 'user_phone'=>'0971504302', 'amount'=>4040000, 'payment'=>'Thanh toán bằng ví momo', 'shipping'=>'Giao hàng nhanh', 'created_at' => date("Y-m-d H:i:s")],
+            ['status'=>3, 'user_id'=>3, 'user_name'=>'Duy Béo', 'user_email'=>'duykhongmap@gmail.com', 'user_address'=>'25 đường 12/5, thị trấn Khâm Đức, huyện Phước Sơn, tỉnh Quảng Nam', 'user_phone'=>'0976568875', 'amount'=>4040000, 'payment'=>'Thanh toán sau khi nhận hàng', 'shipping'=>'Giao hàng nhanh', 'created_at' => date("Y-m-d H:i:s")],
+            ['status'=>3, 'user_id'=>2, 'user_name'=>'Thắng Quang', 'user_email'=>'thanghorit@gmail.com', 'user_address'=>'141 đường Nguyễn Xí, phường Hòa Minh, quận Liên Chiểu, thành phố Đà Nẵng', 'user_phone'=>'0971504302', 'amount'=>9840000, 'payment'=>'Thanh toán sau khi nhận hàng', 'shipping'=>'Giao hàng nhanh', 'created_at' => date("Y-m-d H:i:s")],
         ]);
     }
 }
@@ -383,13 +384,15 @@ class OrderSeeder extends Seeder
     public function run()
     {
         DB::table('orders')->insert([
-            ['transaction_id'=>1, 'product_id'=>2, 'quantity'=>'1', 'name'=>'Giày Adidas Nam Adidas ZX 2K 4D “Triple Black” – Hàng Chính Hãng', 'price'=>2990000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>1, 'product_id'=>4, 'quantity'=>'1', 'name'=>'Adidas Falcon W “Olympic 2020” Nữ – Hàng Chính Hãng', 'price'=>1050000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2020/12/Q47262-1.jpg', 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>2, 'product_id'=>1, 'quantity'=>'1', 'name'=>'Giày Sneaker Nam Adidas ZX 2K 4D FW2002 “Cloud White” – Hàng Chính Hãng', 'price'=>2990000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-01-standard.jpg', 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>2, 'product_id'=>10, 'quantity'=>'1', 'name'=>'Giày Sneaker Nam Adidas Ultraboost 4.0 DNA FU9993 “5th Anniversary” – Hàng Chính Hãng', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/ultraboost-20-city-pack-hype-djen-fx7815-01-standard.jpg', 'price'=>2350000, 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>2, 'product_id'=>11, 'quantity'=>'1', 'name'=>'Giày Nữ Adidas Ultraboost 20 J “Black Reflective/Bronze Boost” – Hàng Chính Hãng', 'price'=>1950000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/02/FX0455-01.jpg', 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>2, 'product_id'=>24, 'quantity'=>'1', 'name'=>'Giày Adidas Nam Adidas Supernova Athleisure “Royal Blue” – Hàng Chính Hãng', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FY1427-1.jpg', 'price'=>1250000, 'created_at' => date("Y-m-d H:i:s")],
-            ['transaction_id'=>2, 'product_id'=>25, 'quantity'=>'1', 'name'=>'Giày Nữ Adidas Supernova “Glory Grey” - Hàng Chính Hãng', 'price'=>1300000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2020/12/FV6018-1.jpg', 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>1, 'product_id'=>2, 'quantity'=>'1', 'size'=>'40', 'name'=>'Giày Adidas Nam Adidas ZX 2K 4D “Triple Black” – Hàng Chính Hãng', 'price'=>2990000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>1, 'product_id'=>4, 'quantity'=>'1', 'size'=>'41', 'name'=>'Adidas Falcon W “Olympic 2020” Nữ – Hàng Chính Hãng', 'price'=>1050000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2020/12/Q47262-1.jpg', 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>2, 'product_id'=>2, 'quantity'=>'1', 'size'=>'40', 'name'=>'Giày Adidas Nam Adidas ZX 2K 4D “Triple Black” – Hàng Chính Hãng', 'price'=>2990000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>2, 'product_id'=>4, 'quantity'=>'1', 'size'=>'41', 'name'=>'Adidas Falcon W “Olympic 2020” Nữ – Hàng Chính Hãng', 'price'=>1050000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2020/12/Q47262-1.jpg', 'isComment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>3, 'product_id'=>1, 'quantity'=>'1', 'size'=>'40', 'name'=>'Giày Sneaker Nam Adidas ZX 2K 4D FW2002 “Cloud White” – Hàng Chính Hãng', 'price'=>2990000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-01-standard.jpg', 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>3, 'product_id'=>10, 'quantity'=>'1', 'size'=>'42', 'name'=>'Giày Sneaker Nam Adidas Ultraboost 4.0 DNA FU9993 “5th Anniversary” – Hàng Chính Hãng', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/ultraboost-20-city-pack-hype-djen-fx7815-01-standard.jpg', 'price'=>2350000, 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>3, 'product_id'=>11, 'quantity'=>'1', 'size'=>'40', 'name'=>'Giày Nữ Adidas Ultraboost 20 J “Black Reflective/Bronze Boost” – Hàng Chính Hãng', 'price'=>1950000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/02/FX0455-01.jpg', 'is_comment'=> true, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>3, 'product_id'=>24, 'quantity'=>'1', 'size'=>'43', 'name'=>'Giày Adidas Nam Adidas Supernova Athleisure “Royal Blue” – Hàng Chính Hãng', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FY1427-1.jpg', 'is_comment'=> true, 'price'=>1250000, 'created_at' => date("Y-m-d H:i:s")],
+            ['transaction_id'=>3, 'product_id'=>25, 'quantity'=>'1', 'size'=>'39', 'name'=>'Giày Nữ Adidas Supernova “Glory Grey” - Hàng Chính Hãng', 'price'=>1300000, 'image'=>'https://adidasstore.vn/wp-content/uploads/2020/12/FV6018-1.jpg', 'is_comment'=> false, 'created_at' => date("Y-m-d H:i:s")],
         ]);
     }
 }
@@ -399,18 +402,14 @@ class CommentSeeder extends Seeder
     public function run()
     {
         DB::table('comments')->insert([
-            ['product_id'=>1, 'user_id'=>2, 'star'=>'5', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-02-standard.jpg;https://adidasstore.vn/wp-content/uploads/2021/03/zx-2k-4d-shoes-white-fw2002-03-standard.jpg' , 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>1, 'user_id'=>3, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>2, 'user_id'=>2, 'star'=>'3', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>2, 'user_id'=>3, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>3, 'user_id'=>3, 'star'=>'3', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>3, 'user_id'=>2, 'star'=>'5', 'image'=>'https://adidasstore.vn/wp-content/uploads/2021/02/EG1192-1.jpg', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>4, 'user_id'=>3, 'star'=>'4', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>4, 'user_id'=>2, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>5, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>5, 'user_id'=>3, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>6, 'user_id'=>3, 'star'=>'2', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'created_at' => date("Y-m-d H:i:s")],
-            ['product_id'=>6, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>2, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'image' => 'https://adidasstore.vn/wp-content/uploads/2021/01/FZ3561-01.jpg', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>4, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>2, 'user_id'=>3, 'star'=>'4', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>4, 'user_id'=>3, 'star'=>'4', 'content'=>'mang oke!', 'image'=> 'https://adidasstore.vn/wp-content/uploads/2020/12/Q47262-1.jpg', 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>1, 'user_id'=>2, 'star'=>'3', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>10, 'user_id'=>2, 'star'=>'5', 'content'=>'Giao hàng nhanh, gói hàng kĩ càng, hộp vẫn còn nguyên k móp méo gì. Chất lượng giày ở mức ổn chứ k xuất sắc lắm. Đáng tiền', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>11, 'user_id'=>2, 'star'=>'3', 'content'=>'Sản phẩm tốt, mang oke! 10đ tuyệt vời', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
+            ['product_id'=>24, 'user_id'=>2, 'star'=>'5', 'content'=>'Sản phẩm khá ổn. Đi êm chân. Khả năng có lương lại ủng hộ shop đôi nữa. Giao hàng rất nhanh. 10h hôm trước đặt. 5h chiều hôm sau đã giao rồi.', 'image' => null, 'created_at' => date("Y-m-d H:i:s")],
         ]);
     }
 }

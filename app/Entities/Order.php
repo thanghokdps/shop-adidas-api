@@ -25,6 +25,7 @@ class Order extends Model implements Transformable
         'name',
         'price',
         'image',
+        'is_comment'
     ];
 
     public function product(): HasOne

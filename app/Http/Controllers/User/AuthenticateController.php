@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Helpers\ErrorCodeHelper;
 use App\Helpers\HttpCode;
 use App\Helpers\ResponseHelper;
 use App\Helpers\Status;

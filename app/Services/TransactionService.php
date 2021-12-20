@@ -37,4 +37,9 @@ class TransactionService
     {
         return $this->transactionRepository->update($attributes, $id);
     }
+
+    public function delete($id): int
+    {
+        return $this->transactionRepository->delete($id);
+    }
 }
