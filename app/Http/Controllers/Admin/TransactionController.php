@@ -45,7 +45,7 @@ class TransactionController
         try {
             DB::beginTransaction();
             if($request['status'] == 0){
-                $result = $this->transactionService->update($request['status'], $id);
+                $result = $this->transactionService->update(['status' => $request['status']], $id);
                 $orders = $this->orderService->findByField('transaction_id', $id);
                 $detailProducts = [];
                 foreach ($orders as $order)
@@ -60,7 +60,7 @@ class TransactionController
                 $detailProducts = $this->detailProductService->update($detailProducts);
                 $this->orderService->delete($id);
             } else {
-                $result = $this->transactionService->update($request['status'], $id);
+                $result = $this->transactionService->update(['status' => $request['status']], $id);
             }
             DB::commit();
             return ResponseHelper::send($result);
