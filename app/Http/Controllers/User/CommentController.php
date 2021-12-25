@@ -37,8 +37,10 @@ class CommentController
     {
         try {
             DB::beginTransaction();
-            $bad_words = array('cc', 'ccc', 'cccc', 'concet', 'cailon', 'cailoz', 'lon', 'loz', 'clgt','clmm', 'cmm', 'djtme', 'ditme', 'dit', 'djt', 'koncet', 'cet'
-            ,'vcl','cl','xxx','mm','đcmm','đmm','đm','địt','đụ','đĩ','lồn','cẹt','kẹt','mẹ mày','thèn cha mày', 'cứt', 'cut');
+            $bad_words =  array('cc', 'ccc', 'cccc', 'concet', 'cailon', 'cailoz', 'lon', 'loz', 'clgt','clmm', 'cmm', 'djtme', 'ditme', 'dit', 'djt', 'koncet', 'cet'
+            ,'vcl','cl','xxx','mm','đcmm','đmm','đm','địt','đụ','đĩ','lồn','cẹt','kẹt','mẹ mày','thèn cha mày', 'cứt', 'cut', 'lz', 'Cc', 'cCc', 'CCc', 'Concet'
+            , 'Cailon', 'Cailoz', 'Lon', 'Loz', 'Clgt','Clmm', 'Cmm', 'Djtme', 'Ditme', 'Dit', 'Djt', 'Koncet', 'Cet','Vcl','Cl','Xxx','Mm','Đcmm','Đmm','Đm','Địt'
+            ,'Đụ','Đĩ','Lồn','Cẹt','Kẹt','Mẹ mày','Thèn cha mày', 'Cứt', 'Cut', 'Lz');
             if ($this->strpos_arr($request['content'], $bad_words)) {
                 return ResponseHelper::send(['error'=>'Vui lòng không nói tục, chửi thề']);
             } else {
